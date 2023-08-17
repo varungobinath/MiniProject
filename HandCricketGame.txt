@@ -1,0 +1,110 @@
+#include <stdio.h>
+#include <time.h>
+
+void welcome();
+void duckout();
+int main(){
+
+srand(time(0));
+int flagd=0;
+int bob;
+int p_score,a_score=0;
+int p_run,a_run;//(rand()%6)+1
+welcome();
+printf("\nChoose your option\n\n\t1.Batting\n\t2.Bowling\n");
+printf("Enter Here: ");
+scanf("%d",&bob);
+printf("\n");
+if(bob!=1){
+    printf("Player's choice is Bowling and\n\tJarvis's choice is Batting\n");
+}else{
+    printf("Player's choice is Batting and\n\tJarvis's choice is Bowling\n");
+}
+
+do{
+    a_run = (rand()%6)+1;
+    do{
+        printf("\nEnter your runs (1 to 6): ");
+        scanf("%d",&p_run);
+    }while(p_run<0 || p_run>6);
+    if(p_run!=a_run){
+        if(bob==1)
+            p_score+=p_run;
+        else if(bob!=1)
+            a_score+=a_run;
+    }
+    printf("\nPlayer's run: %d\t\t\t\tPlayer's Total run: %d\n",p_run,p_score);
+    printf("Jarvis's run: %d\t\t\t\tJarvis's Total run: %d\n",a_run,a_score);
+
+}while(p_run!=a_run);
+if (p_score==0 && a_score==0)
+    duckout();
+    flagd=1;
+if(p_score==0)
+    printf("\nPlayer have %d runs or above to win\n",a_score+1);
+else if(a_score==0)
+    printf("\nJarvis have %d runs or above to win\n",p_score+1);
+printf("\n");
+if(bob!=1){
+    printf("Now Jarvis's choice is Bowling and\n\tPlayer's choice is Batting\n");
+}else{
+    printf("Now Jarvis's choice is Batting and\n\tPlayer's choice is Bowling\n");
+}
+
+do{
+    a_run = (rand()%6)+1;
+ do{
+        printf("\nEnter your runs(1 to 6): ");
+        scanf("%d",&p_run);
+    }while(p_run<0 || p_run>6);
+    if(p_run!=a_run){
+        if(bob!=1)
+            p_score+=p_run;
+        else if(bob==1)
+            a_score+=a_run;
+    }
+
+    printf("\nPlayer's run: %d\t\t\t\tPlayer's Total run: %d\n",p_run,p_score);
+    printf("Jarvis's run: %d\t\t\t\tJarvis's Total run: %d\n",a_run,a_score);
+    if(bob==1){
+        if(a_score>p_score){
+            printf("\nSORRY, YOU LOSE THE MATCH\n");
+            break;
+        }
+    }else if(bob!=1){
+        if(p_score>a_score){
+            printf("\nCONGRATULATIONS, YOU WON THE MATCH\n");
+            break;
+        }
+    }
+}while(p_run!=a_run);
+if(p_score==0 || a_score==0)
+    if(flagd!=0)
+    duckout();
+if(bob==1){
+    if(a_score<p_score)
+        printf("\nCONGRATULATIONS, YOU WON THE MATCH\n");
+}
+else if(bob!=1){
+    if(p_score<a_score)
+        printf("\nSORRY, YOU LOSE THE MATCH\n");
+}
+if(a_score==p_score)
+    printf("\nWHAT A COINCIDENCE, BOTH ARE IN A DRAW\n");
+printf("\nPress any Key & Enter to exit>>>");
+scanf(" ");
+return 0;
+}
+void welcome(){
+printf("     __    __ __ _  _ __\n");
+printf("|  ||_ |  /  /  \\|\\/||_ \n");
+printf("|/\\||__|__\\__\\__/|  ||__\n");
+}
+void duckout(){
+printf(" ___   _   _ ___   _   _ _____ _   _ _____ \n");
+printf("(  _ \\( ) ( )  _ \\( ) ( )  _  ) ) ( )_   _)\n");
+printf("| | ) | | | | ( (_) |/ /| ( ) | | | | | |  \n");
+printf("| | | ) | | | |  _|   ( | | | | | | | | |  \n");
+printf("| |_) | (_) | (_( ) |\\ \\| (_) | (_) | | |  \n");
+printf("(____/(_____)____/(_) (_)_____)_____) (_)  \n\n");
+}
