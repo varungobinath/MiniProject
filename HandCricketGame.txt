@@ -8,7 +8,7 @@ int main(){
 srand(time(0));
 int flagd=0;
 int bob;
-int p_score,a_score=0;
+int p_score=0,a_score=0;
 int p_run,a_run;//(rand()%6)+1
 welcome();
 printf("\nChoose your option\n\n\t1.Batting\n\t2.Bowling\n");
